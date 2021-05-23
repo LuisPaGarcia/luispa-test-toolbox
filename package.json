@@ -1,0 +1,25 @@
+{
+  "name": "luispa-test-toolbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisPaGarcia/luispa-test-toolbox.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuisPaGarcia/luispa-test-toolbox/issues"
+  },
+  "homepage": "https://github.com/LuisPaGarcia/luispa-test-toolbox#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  }
+}
