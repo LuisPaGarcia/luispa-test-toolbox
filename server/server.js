@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 // Apply first API route
-app.use("/api/inbound", inboundRouter);
+app.use("/api", inboundRouter);
 
 // Start core function
 const start = async () => {

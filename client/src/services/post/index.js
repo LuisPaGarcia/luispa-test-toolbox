@@ -12,6 +12,7 @@ const useAxios = async ({ url, method, body = null, headers = null }) => {
     return { response, error, loading };
   } catch (err) {
     error = err;
+    loading = false;
     return { response, error, loading };
   }
 };
