@@ -75,3 +75,12 @@ $ cd ..
 ```sh
 $ npm run start:prod
 ```
+
+## TODO
+
+- [x] Start client
+- [x] Start server
+- [x] Serve client files using expres
+- [ ] Unit tests
+- [ ] Integration tests
+- [ ] Migrate it to TypeScript
