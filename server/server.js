@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
+const path = require("path");
 // Start express app
 const app = express();
 
@@ -15,6 +16,7 @@ app.disable("x-powered-by");
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(express.static(path.join(__dirname, "../client/build")));
 
 // Apply first API route
 app.use("/api", inboundRouter);
