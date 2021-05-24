@@ -1,6 +1,7 @@
 import axios from "redaxios";
 
-axios.defaults.baseURL = "http://localhost:3000/api";
+const PORT = process.env.NODE_ENV === "production" ? "3001" : "3000";
+axios.defaults.baseURL = `http://localhost:${PORT}/api`;
 
 const useAxios = async ({ url, method, body = null, headers = null }) => {
   let response;
