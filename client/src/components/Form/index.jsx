@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { Fragment, useState, useRef, useEffect } from "react";
+import Response from "../Response";
+import Input from "../Input";
+import SubmitButton from "../SubmitButton";
 import postData from "../../services/post";
 
 export default function Form() {
   const [input, inputSet] = useState("");
+  const [loading, loadingSet] = useState(false);
   const [data, dataSet] = useState({});
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { response /*, error, loading*/ } = await postData({
+    loadingSet(true);
+    const { response } = await postData({
       method: "post",
       url: "/inbound",
       body: JSON.stringify({
@@ -15,16 +25,27 @@ export default function Form() {
       }),
     });
     dataSet(response.data);
-    console.log(response.data);
+    loadingSet(false);
+    inputRef.current.focus();
   };
 
   const handleChange = (e) => inputSet(e.target.value);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input onChange={handleChange} value={input} />
-      <button type="submit">Submit</button>
-      <div>{data && data.data && <p>{data.data}</p>}</div>
-    </form>
+    <Fragment>
+      <div className="border border-1 p-2 w-50">
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <Input
+              handleChange={handleChange}
+              input={input}
+              inputRef={inputRef}
+            />
+          </div>
+          <SubmitButton loading={loading} input={input} />
+        </form>
+      </div>
+      <Response data={data} />
+    </Fragment>
   );
 }

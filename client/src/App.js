@@ -3,7 +3,7 @@ import Form from "./components/Form";
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="container d-flex flex-column vh-100 justify-content-center align-items-center">
         <Form />
       </div>
     );
